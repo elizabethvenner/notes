@@ -12,4 +12,4 @@ var assert = {
   }
 };
 
-module.exports = assert;
+// module.exports = assert;
