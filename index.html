@@ -14,9 +14,8 @@
   <li> Note2 </li>
   <li> Note3 </li>
 </ul>
-
 <h1> My note </h1>
-<div id="full">  </div>
+<div id="full"></div>
 
   </body>
 
@@ -38,5 +37,14 @@
     .getElementById("full")
     .innerHTML = "banan";
   }
+console.log(testLink());
+
+  function testLink () {
+    document.getElementById("abbr").click();
+    if (document.getElementById("full") !== "banana") {
+      throw new Error("That's not a banana!");
+    }
+  }
+
   </script>
 </html>
