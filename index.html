@@ -31,11 +31,16 @@
   notes = mynotes.items;
 
   var renderNote = function (notes) {
-    notes.forEach(function(note){
+    notes.forEach(function(note, index){
+      var a = document.createElement('a');
       var ul = document.getElementById("notes");
       var li = document.createElement("li");
       var text = document.createTextNode(truncator(note));
-      li.appendChild(text);
+      a.id = index;
+      a.title = text;
+      a.href = text;
+      a.appendChild(text);
+      li.appendChild(a);
       ul.appendChild(li);
     });
   }
@@ -59,18 +64,20 @@
 
   function testLink () {
     document.getElementById("abbr").click();
-    if (document.getElementById("full").innerHTML !== "banana") {
-      throw new Error("That's not a banana!");
+    if (document.getElementById("full").innerHTML !== 'hellohellohellohello!!!' {
+      throw new Error("This is not the full note");
     }
   }
 
   function testTruncator (notes) {
     renderNote(notes);
-    if (document.getElementsByTagName("li")[4].innerHTML.length > 23) {
+    if (document.getElementById(0).title.length < 23) {
       throw new Error("Note not abbreviated");
     }
   }
   console.log(testTruncator(notes));
+
+  console.log(document.getElementsByTagName("a.title")[4]);
 
 
   </script>
