@@ -7,8 +7,8 @@
   </head>
   <body>
     <h1> NOTES </h1>
-    <textarea id="note-content"> some text </textarea>
-    <input type="submit" value="create">
+    <textarea id="note-content">rainbow</textarea>
+    <input id="add-note" type="submit" value="create">
     <ul>
       <li> <a href="" id="abbr"> Note1 </a></li>
       <li> Note1 </li>
@@ -20,44 +20,51 @@
     <script>
     var notes = new Notes();
 
-      renderFullNote();
+      // renderFullNote();
+      createNote();
 
-      function renderFullNote () {
-        document
-        .getElementById("abbr")
-        .addEventListener("click", function(clickEvent) {
-          clickEvent.preventDefault();
-          showNote();
+      // function renderFullNote () {
+      //   document
+      //   .getElementById("abbr")
+      //   .addEventListener("click", function(clickEvent) {
+      //     clickEvent.preventDefault();
+      //     showNote();
+      //   });
+      // }
+      //
+      // function showNote() {
+      //   document
+      //   .getElementById("full")
+      //   .innerHTML = "banana";
+      // }
+
+      function createNote() {
+        document.getElementById("add-note").addEventListener("click", function() {
+          notes.items.push(document.getElementById("note-content").value)
         });
       }
 
-      function showNote() {
-        document
-        .getElementById("full")
-        .innerHTML = "banana";
-      }
-
-      function createNote() {
-        notes.items.push(document.getElementById("note-content").innerHTML)
-      }
-
-      testLink();
+      // testLink();
       testCreateNote();
 
-// Tests
+      // Tests
 
+      //
+      // function testLink () {
+      //   document.getElementById("abbr").click();
+      //   if (document.getElementById("full").innerHTML !== "banana") {
+      //     throw new Error("That's not a banana!");
+      //   }
+      // }
 
-      function testLink () {
-        document.getElementById("abbr").click();
-        if (document.getElementById("full").innerHTML !== "banana") {
-          throw new Error("That's not a banana!");
-        }
-      }
       function testCreateNote () {
-         document.getElementById("note-content").innerHTML = "GET UP EARLIER!"
-        createNote();
+        document.getElementById("note-content").value = "GET UP EARLIER!"
+        document.getElementById("add-note").click();
         if (notes.items.length !== 1) {
           throw new Error("Note array length has not increased");
+        }
+        if (notes.items[0] != "GET UP EARLIER!") {
+          throw new Error("Text was not found in array");
         }
       }
 
