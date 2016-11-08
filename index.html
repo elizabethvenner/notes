@@ -1,96 +1,98 @@
 <!DOCTYPE html>
 <html>
-  <head>
-    <meta charset="utf-8">
-    <title></title>
-    <script src="notes.js"></script>
-  </head>
-  <body>
-<h1> NOTES </h1>
-<textarea> some text </textarea>
-<input type="submit" value="create">
-<ul id="notes">
-  <li> <a href="" id="abbr"> Note1 </a></li>
-  <li> Note1 </li>
-  <li> Note2 </li>
-  <li> Note3 </li>
-</ul>
-<h1> My note </h1>
-<div id="full"></div>
+<head>
+  <meta charset="utf-8">
+  <title></title>
+  <script src="notes.js"></script>
+</head>
+<body>
+  <h1> NOTES </h1>
+  <textarea> some text </textarea>
+  <input type="submit" value="create">
+  <ul id="notes">
+
+  </ul>
+  <h1> My note </h1>
+  <div id="full"></div>
 
 
 
-  </body>
+</body>
 
-  <script>
+<script>
 
 
-  mynotes = new Notes();
-  mynotes.items = ['hellohellohellohello!!!', 'goodbye', 'chocolate', 'banana'];
-  notes = mynotes.items;
+mynotes = new Notes();
+mynotes.items = ['hellohellohellohello!!!', 'goodbye', 'chocolate', 'banana'];
+notes = mynotes.items;
 
-  var renderNote = function (notes) {
-    notes.forEach(function(note, index){
-      var a = document.createElement('a');
-      var ul = document.getElementById("notes");
-      var li = document.createElement("li");
-      var text = document.createTextNode(truncator(note));
-      a.id = index;
-      a.title = text;
-      a.href = "#"+index;
-      a.appendChild(text);
-      li.appendChild(a);
-      ul.appendChild(li);
-    });
-  }
-  renderNote(notes);
-  makeURLRenderFullNote();
+var renderNoteList = function (notes) {
+  notes.forEach(function(note, index){
+    var a = document.createElement('a');
+    var ul = document.getElementById("notes");
+    var li = document.createElement("li");
+    var text = document.createTextNode(truncator(note));
+    a.id = index;
+    a.title = text;
+    a.href = "#"+index;
+    a.appendChild(text);
+    li.appendChild(a);
+    ul.appendChild(li);
+  });
+}
+renderNoteList(notes);
 
-  function renderFullNote () {
-    document
-    .getElementById(0)
-    .addEventListener("click", function(clickEvent) {
-      clickEvent.preventDefault();
-      showNote();
-    });
-  }
-  function makeURLRenderFullNote() {
-    window.addEventListener("hashchange", showNoteForCurrentPage);
-  }
+makeURLRenderFullNote();
 
-  function showNoteForCurrentPage () {
-    showNote(showNoteFromUrl(window.location));
-  }
 
-  function showNoteFromUrl (location) {
-    return location.hash.split("#")[1];
-  }
+function makeURLRenderFullNote() {
+  window.addEventListener("hashchange", getNoteIdForCurrentPage);
+}
 
-  function showNote(index) {
-    document
-    .getElementById("full")
-    .innerHTML = mynotes.items[index];
-  }
-  console.log(testLink());
-  renderFullNote();
+function getNoteIdForCurrentPage () {
+  showNote(getNoteFromUrl(window.location));
+}
 
-  function testLink () {
-    document.getElementById(0).click();
+function getNoteFromUrl (location) {
+  return location.hash.split("#")[1];
+}
+
+function showNote(index) {
+  document
+  .getElementById("full")
+  .innerHTML = mynotes.items[index];
+}
+
+function renderFullNote () {
+  document
+  .getElementById(0)
+  .addEventListener("click", function(clickEvent) {
+    clickEvent.preventDefault();
+    showNote(0);
+
+  });
+}
+renderFullNote();
+function testLink () {
+  document.getElementById(0).click();
+  function test() {
     if (document.getElementById("full").innerHTML !== 'hellohellohellohello!!!') {
       throw new Error("This is not the full note");
     }
   }
+  setTimeout(test, 10);
+}
 
-  function testTruncator (notes) {
-    renderNote(notes);
-    if (document.getElementById(0).title.length < 23) {
-      throw new Error("Note not abbreviated");
-    }
+
+testLink();
+function testTruncator (notes) {
+  renderNoteList(notes);
+  if (document.getElementById(0).text.length < 23) {
+    throw new Error("Note not abbreviated");
   }
-  console.log(testTruncator(notes));
-
-  console.log(document.getElementsByTagName("a.title")[4]);
+}
 
 
-  </script>
+
+</script>
 </html>
