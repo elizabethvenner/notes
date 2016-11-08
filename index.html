@@ -24,7 +24,6 @@
 
   <script>
 
-  renderFullNote();
 
   mynotes = new Notes();
   mynotes.items = ['hellohellohellohello!!!', 'goodbye', 'chocolate', 'banana'];
@@ -38,33 +37,46 @@
       var text = document.createTextNode(truncator(note));
       a.id = index;
       a.title = text;
-      a.href = text;
+      a.href = "#"+index;
       a.appendChild(text);
       li.appendChild(a);
       ul.appendChild(li);
     });
   }
   renderNote(notes);
+  makeURLRenderFullNote();
 
   function renderFullNote () {
     document
-    .getElementById("abbr")
+    .getElementById(0)
     .addEventListener("click", function(clickEvent) {
       clickEvent.preventDefault();
       showNote();
     });
   }
+  function makeURLRenderFullNote() {
+    window.addEventListener("hashchange", showNoteForCurrentPage);
+  }
 
-  function showNote() {
+  function showNoteForCurrentPage () {
+    showNote(showNoteFromUrl(window.location));
+  }
+
+  function showNoteFromUrl (location) {
+    return location.hash.split("#")[1];
+  }
+
+  function showNote(index) {
     document
     .getElementById("full")
-    .innerHTML = "banana";
+    .innerHTML = mynotes.items[index];
   }
   console.log(testLink());
+  renderFullNote();
 
   function testLink () {
-    document.getElementById("abbr").click();
-    if (document.getElementById("full").innerHTML !== 'hellohellohellohello!!!' {
+    document.getElementById(0).click();
+    if (document.getElementById("full").innerHTML !== 'hellohellohellohello!!!') {
       throw new Error("This is not the full note");
     }
   }
