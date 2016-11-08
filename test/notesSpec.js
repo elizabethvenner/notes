@@ -12,8 +12,20 @@ var checkNoteHasBeenAdded = function(){
   }
 };
 
+var checkNoteHasOnly20Characters = function () {
+  var notes = new Notes();
+  notes.items = ['1234567891011121314151617']
+  try {
+    assert.isTrue(truncator(notes.items[0]).length < 21);
+    return "Passed - note has fewer than 20 characters"
+  }
+  catch(error){
+    return error;
+  };
+}
+
 // ---Update this array to run tests!! ---
-var tests = [ checkNoteHasBeenAdded() ];
+var tests = [ checkNoteHasBeenAdded(), checkNoteHasOnly20Characters() ];
 
 // ---
 
