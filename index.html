@@ -3,10 +3,11 @@
   <head>
     <meta charset="utf-8">
     <title></title>
+    <script src="notes.js"></script>
   </head>
   <body>
     <h1> NOTES </h1>
-    <textarea> some text </textarea>
+    <textarea id="note-content"> some text </textarea>
     <input type="submit" value="create">
     <ul>
       <li> <a href="" id="abbr"> Note1 </a></li>
@@ -17,6 +18,8 @@
     <h1> My note </h1>
     <div id="full"></div>
     <script>
+    var notes = new Notes();
+
       renderFullNote();
 
       function renderFullNote () {
@@ -34,12 +37,27 @@
         .innerHTML = "banana";
       }
 
-      console.log(testLink());
+      function createNote() {
+        notes.items.push(document.getElementById("note-content").innerHTML)
+      }
+
+      testLink();
+      testCreateNote();
+
+// Tests
+
 
       function testLink () {
         document.getElementById("abbr").click();
         if (document.getElementById("full").innerHTML !== "banana") {
           throw new Error("That's not a banana!");
+        }
+      }
+      function testCreateNote () {
+         document.getElementById("note-content").innerHTML = "GET UP EARLIER!"
+        createNote();
+        if (notes.items.length !== 1) {
+          throw new Error("Note array length has not increased");
         }
       }
 
