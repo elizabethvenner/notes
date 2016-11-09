@@ -38,7 +38,10 @@ var checkNoteHasOnly20Characters = function () {
 }
 
 // ---Update this array to run tests!! ---
+<<<<<<< HEAD
 var tests = [ checkNoteHasBeenAdded(), checkNoteHasOnly20Characters() ];
+=======
+>>>>>>> 3c4970abf6d7aa2845d93a20d13d8de1701bb8d2
 
 var tests = [ checkDefaultIs0(), checkNoteHasBeenAdded() ];
 

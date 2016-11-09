@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html>
+<<<<<<< HEAD
 <head>
   <meta charset="utf-8">
   <title></title>
@@ -15,7 +16,6 @@
   <h1> My note </h1>
   <div id="full"></div>
 
-      testCreateNote();
 
 
 </body>
@@ -96,4 +96,47 @@ function testTruncator (notes) {
 
 
 </script>
+=======
+  <head>
+    <meta charset="utf-8">
+    <title></title>
+    <script src="notes.js"></script>
+  </head>
+  <body>
+    <h1> NOTES </h1>
+    <textarea id="note-content">rainbow</textarea>
+    <input id="add-note" type="submit" value="create">
+    <ul>
+      <li> <a href="" id="abbr"> Note1 </a></li>
+      <li> Note1 </li>
+      <li> Note2 </li>
+      <li> Note3 </li>
+    </ul>
+    <h1> My note </h1>
+    <div id="full"></div>
+    <script>
+    var notes = new Notes();
+      createNote();
+
+      function createNote() {
+        document.getElementById("add-note").addEventListener("click", function() {
+          notes.items.push(document.getElementById("note-content").value)
+        });
+      }
+
+      testCreateNote();
+
+      function testCreateNote () {
+        document.getElementById("note-content").value = "GET UP EARLIER!"
+        document.getElementById("add-note").click();
+        if (notes.items.length !== 1) {
+          throw new Error("Note array length has not increased");
+        }
+        if (notes.items[0] != "GET UP EARLIER!") {
+          throw new Error("Text was not found in array");
+        }
+      }
+    </script>
+  </body>
+>>>>>>> 3c4970abf6d7aa2845d93a20d13d8de1701bb8d2
 </html>

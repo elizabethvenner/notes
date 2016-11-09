@@ -1,5 +1,5 @@
 function Notes() {
-  this.items = ["sure"];
+  this.items = [];
 }
 
 function truncator(note) {
