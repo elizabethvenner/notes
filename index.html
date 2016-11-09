@@ -19,24 +19,7 @@
     <div id="full"></div>
     <script>
     var notes = new Notes();
-
-      // renderFullNote();
       createNote();
-
-      // function renderFullNote () {
-      //   document
-      //   .getElementById("abbr")
-      //   .addEventListener("click", function(clickEvent) {
-      //     clickEvent.preventDefault();
-      //     showNote();
-      //   });
-      // }
-      //
-      // function showNote() {
-      //   document
-      //   .getElementById("full")
-      //   .innerHTML = "banana";
-      // }
 
       function createNote() {
         document.getElementById("add-note").addEventListener("click", function() {
@@ -44,18 +27,7 @@
         });
       }
 
-      // testLink();
       testCreateNote();
-
-      // Tests
-
-      //
-      // function testLink () {
-      //   document.getElementById("abbr").click();
-      //   if (document.getElementById("full").innerHTML !== "banana") {
-      //     throw new Error("That's not a banana!");
-      //   }
-      // }
 
       function testCreateNote () {
         document.getElementById("note-content").value = "GET UP EARLIER!"
@@ -67,7 +39,6 @@
           throw new Error("Text was not found in array");
         }
       }
-
     </script>
   </body>
 </html>
