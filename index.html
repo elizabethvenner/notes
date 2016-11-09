@@ -59,6 +59,7 @@
     document.getElementById("add-note").addEventListener("click", function() {
       mynotes.items.push(document.getElementById("note-content").value)
       addNoteToList(notes[notes.length - 1]);
+      document.getElementById("note-content").value = ""
     });
   }
 
