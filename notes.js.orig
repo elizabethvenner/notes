@@ -1,7 +1,11 @@
 function Notes() {
-  this.items = [];
+<<<<<<< HEAD
+  this.items = ["sure"];
 }
 
 function truncator(note) {
   return note.slice(0, 20) + "...";
+=======
+  this.items = [];
+>>>>>>> master
 }

@@ -4,8 +4,12 @@
   <meta charset="utf-8">
   <title> Spec Runner</title>
   <script src="test/test_helpers/assert.js"></script>
+<<<<<<< HEAD
   <script src="notes.js"></script>
+=======
+>>>>>>> master
   <script src="test/notesSpec.js"></script>
+  <script src="notes.js"></script>
 </head>
 
 <body>
