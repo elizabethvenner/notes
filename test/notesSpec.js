@@ -15,27 +15,13 @@ var checkDefaultIs0 = function(){
 var checkNoteHasBeenAdded = function(){
   var notes = new Notes();
   try {
-    // ACTUAL TEST
-    notes.items.push("this is my note")
-    assert.isEqual(notes.items.length, 1);
-    return "Passed - note has been added";
+    assert.isTrue(truncator(notes.items[0]).length < 21);
+    return "Passed - note has fewer than 20 characters";
   }
   catch(error){
     return error;
   }
 };
-
-var checkNoteHasOnly20Characters = function () {
-  var notes = new Notes();
-  notes.items = ['1234567891011121314151617']
-  try {
-    assert.isTrue(truncator(notes.items[0]).length < 21);
-    return "Passed - note has fewer than 20 characters"
-  }
-  catch(error){
-    return error;
-  };
-}
 
 // ---Update this array to run tests!! ---
 var tests = [ checkNoteHasBeenAdded(), checkNoteHasOnly20Characters() ];
