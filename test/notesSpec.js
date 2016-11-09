@@ -24,9 +24,7 @@ var checkNoteHasBeenAdded = function(){
 };
 
 // ---Update this array to run tests!! ---
-var tests = [ checkNoteHasBeenAdded(), checkNoteHasOnly20Characters() ];
-
-var tests = [ checkDefaultIs0(), checkNoteHasBeenAdded() ];
+var tests = [ checkDefaultIs0(), checkNoteHasBeenAdded(), checkNoteHasOnly20Characters() ];
 
 // --- UPDATES THE HTML ---
 
