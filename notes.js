@@ -3,5 +3,9 @@ function Notes() {
 }
 
 function truncator(note) {
-  return note.slice(0, 20) + "...";
+  if (note.length < 20) {
+    return note;
+  } else {
+    return note.slice(0, 20) + "...";
+  }
 }
