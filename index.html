@@ -7,7 +7,8 @@
 </head>
 <body>
   <h1> NOTES </h1>
-  <textarea id="note-content" placeholder="enter text..."></textarea>
+  <div id="errors"></div>
+  <textarea id="note-content" placeholder="enter text..." cols="40" rows="10"></textarea>
   <input id="add-note" type="submit" value="create">
   <ul id="notes">
 
@@ -38,8 +39,14 @@
   function createNote() {
     document.getElementById("add-note").addEventListener("click", function() {
       mynotes.items.push(document.getElementById("note-content").value)
-      addNoteToList(notes[notes.length - 1]);
-      document.getElementById("note-content").value = ""
+      if(document.getElementById("note-content").value != "") {
+        addNoteToList(notes[notes.length - 1]);
+        document.getElementById("note-content").value = ""
+        document.getElementById("errors").innerHTML = "";
+
+      } else {
+        document.getElementById("errors").innerHTML = "Please enter some text";
+      }
     });
   }
 
