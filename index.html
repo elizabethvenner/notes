@@ -63,16 +63,6 @@ function showNote(index) {
   .innerHTML = mynotes.items[index];
 }
 
-function renderFullNote () {
-  document
-  .getElementById(0)
-  .addEventListener("click", function(clickEvent) {
-    clickEvent.preventDefault();
-    showNote(0);
-
-  });
-}
-renderFullNote();
 function testLink () {
   document.getElementById(0).click();
   function test() {
