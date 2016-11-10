@@ -1,11 +1,14 @@
 window.onload = function() {
+  scriptHead('notes.js');
   heading("NOTES");
   div('errors');
   textArea();
+  createButton();
   notes();
   heading("My note");
   div('full');
-  script('ui.js');
+  scriptBody('ui.js');
+  scriptBody('test/notesFeatureSpec.js');
 };
 
 function heading(text) {
@@ -30,13 +33,27 @@ function textArea() {
   document.body.appendChild(textArea);
 }
 
+function createButton() {
+  var button = document.createElement('INPUT');
+  button.setAttribute("id", "add-note");
+  button.setAttribute("type", "submit");
+  button.setAttribute("value", "create");
+  document.body.appendChild(button);
+}
+
 function notes() {
   var ul = document.createElement('UL');
   ul.setAttribute("id", "notes");
   document.body.appendChild(ul);
 }
 
-function script(srcValue) {
+function scriptHead(srcValue) {
+  var script = document.createElement('SCRIPT');
+  script.setAttribute("src", srcValue);
+  document.head.appendChild(script);
+}
+
+function scriptBody(srcValue) {
   var script = document.createElement('SCRIPT');
   script.setAttribute("src", srcValue);
   document.body.appendChild(script);
