@@ -1,6 +1,7 @@
 window.onload = function() {
   heading();
   errors();
+  textArea();
 };
 
 function heading () {
@@ -14,4 +15,13 @@ function errors () {
   var div = document.createElement('DIV');
   div.setAttribute("id", "errors");
   document.body.appendChild(div);
+};
+
+function textArea () {
+  var textArea = document.createElement('TEXTAREA');
+  textArea.setAttribute("id", "note-content");
+  textArea.setAttribute("placeholder", "enter text...");
+  textArea.setAttribute("cols", "40");
+  textArea.setAttribute("rows", "10");
+  document.body.appendChild(textArea);
 };
