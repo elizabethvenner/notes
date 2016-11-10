@@ -9,3 +9,9 @@ Notes.prototype.addNote = function (note) {
 Notes.prototype.getFullNoteText = function (index) {
  return this.items[index].text;
 };
+
+Notes.prototype.getNoteIndex = function () {
+  return (this.items.length - 1);
+};
+
+myNotes = new Notes();

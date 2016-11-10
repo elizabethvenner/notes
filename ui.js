@@ -1,14 +1,10 @@
-mynotes = new Notes();
-mynotes.items = [];
-notes = mynotes.items;
-
 createNote();
 makeURLRenderFullNote();
 
 function createNote() {
   document.getElementById("add-note").addEventListener("click", function() {
     var note = new Note(document.getElementById("note-content").value);
-    mynotes.addNote(note);
+    myNotes.addNote(note);
     if(document.getElementById("note-content").value !== "") {
       addNoteToList(note);
       document.getElementById("note-content").value = "";
@@ -25,7 +21,7 @@ var addNoteToList = function(note) {
   var ul = document.getElementById("notes");
   var li = document.createElement("li");
   var text = document.createTextNode(note.truncator(note.getNoteText()));
-  a.id = notes.length -1;
+  a.id = myNotes.getNoteIndex();
   a.title = text;
   a.href = "#" + a.id;
   a.appendChild(text);
@@ -49,5 +45,5 @@ function getNoteFromUrl (location) {
 function showNote(index) {
   document
   .getElementById("full")
-  .innerHTML = mynotes.getFullNoteText(index);
+  .innerHTML = myNotes.getFullNoteText(index);
 }
