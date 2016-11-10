@@ -1,5 +1,6 @@
 window.onload = function() {
   scriptHead('notes.js');
+  scriptHead('note.js');
   heading("NOTES");
   div('errors');
   textArea();
@@ -7,9 +8,19 @@ window.onload = function() {
   notes();
   heading("My note");
   div('full');
-  scriptBody('ui.js');
-  scriptBody('test/notesFeatureSpec.js');
+  scriptBody('controller.js');
+  console.log("1st");
+  console.log(window.location);
+  if (findTestFile(window.location) === "testIndex.html") {
+     scriptBody('test/notesFeatureSpec.js');
+  }
 };
+
+function findTestFile (location){
+    var filePath = location.pathname.split('/');
+    var fileName = filePath[filePath.length -1];
+    return fileName;
+}
 
 function heading(text) {
   var h1 = document.createElement("H1");
@@ -57,4 +68,27 @@ function scriptBody(srcValue) {
   var script = document.createElement('SCRIPT');
   script.setAttribute("src", srcValue);
   document.body.appendChild(script);
+}
+
+function addNoteToList(note) {
+  var a = document.createElement('a');
+  var ul = document.getElementById("notes");
+  var li = document.createElement("li");
+  var text = document.createTextNode(note.truncator(note.getNoteText()));
+  a.id = myNotes.getNoteIndex();
+  a.title = text;
+  a.href = "#" + a.id;
+  a.appendChild(text);
+  li.appendChild(a);
+  ul.appendChild(li);
+}
+
+function textAreaClear () {
+  document.getElementById("note-content").value = "";
+  document.getElementById("errors").innerHTML = "";
+}
+
+function showEnterTextMessage (){
+  document.getElementById("errors").innerHTML = "Please enter some text";
+
 }
