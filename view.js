@@ -1,5 +1,4 @@
 window.onload = function() {
-  scriptHead('notes.js');
   heading("NOTES");
   div('errors');
   textArea();
@@ -9,6 +8,26 @@ window.onload = function() {
   div('full');
   scriptBody('ui.js');
   scriptBody('test/notesFeatureSpec.js');
+
+  var myElements = [
+    {element: "SCRIPT", attributes: [["src", "notes.js"]], location: "head" },
+  ];
+
+  // <script id="note.js" placeholder="test"></script>
+
+  for (var i=0; i < myElements.length; i++) {
+    var element = document.createElement(myElements[i].element);
+    for (var x=0; x < myElements[i].attributes.length; x++) {
+      var currentArray = myElements[i].attributes[x];
+      element.setAttribute(currentArray[0], currentArray[1]);
+    }
+    if (myElements[i].location == "head") {
+      document.head.appendChild(element);
+    } else {
+      document.body.appendChild(element);
+    }
+  }
+
 };
 
 function heading(text) {
@@ -45,12 +64,6 @@ function notes() {
   var ul = document.createElement('UL');
   ul.setAttribute("id", "notes");
   document.body.appendChild(ul);
-}
-
-function scriptHead(srcValue) {
-  var script = document.createElement('SCRIPT');
-  script.setAttribute("src", srcValue);
-  document.head.appendChild(script);
 }
 
 function scriptBody(srcValue) {
