@@ -5,24 +5,13 @@ notes = mynotes.items;
 createNote();
 makeURLRenderFullNote();
 
-var addNoteToList = function(note) {
-  var a = document.createElement('a');
-  var ul = document.getElementById("notes");
-  var li = document.createElement("li");
-  var text = document.createTextNode(truncator(note));
-  a.id = notes.length -1;
-  a.title = text;
-  a.href = "#" + a.id;
-  a.appendChild(text);
-  li.appendChild(a);
-  ul.appendChild(li);
-};
-
 function createNote() {
   document.getElementById("add-note").addEventListener("click", function() {
-    mynotes.items.push(document.getElementById("note-content").value);
+    var note = new Note(document.getElementById("note-content").value);
+    mynotes.addNote(note);
+    console.log(notes);
     if(document.getElementById("note-content").value !== "") {
-      addNoteToList(notes[notes.length - 1]);
+      addNoteToList(note);
       document.getElementById("note-content").value = "";
       document.getElementById("errors").innerHTML = "";
 
@@ -31,6 +20,20 @@ function createNote() {
     }
   });
 }
+
+var addNoteToList = function(note) {
+  var a = document.createElement('a');
+  var ul = document.getElementById("notes");
+  var li = document.createElement("li");
+  var text = document.createTextNode(note.truncator(note.getNoteText()));
+  a.id = notes.length -1;
+  a.title = text;
+  a.href = "#" + a.id;
+  a.appendChild(text);
+  li.appendChild(a);
+  ul.appendChild(li);
+};
+
 
 function makeURLRenderFullNote() {
   window.addEventListener("hashchange", getNoteIdForCurrentPage);
@@ -47,5 +50,5 @@ function getNoteFromUrl (location) {
 function showNote(index) {
   document
   .getElementById("full")
-  .innerHTML = mynotes.items[index];
+  .innerHTML = mynotes.getFullNoteText(index);
 }

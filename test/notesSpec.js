@@ -14,8 +14,32 @@ var checkDefaultIs0 = function(){
 
 var checkNoteHasBeenAdded = function(){
   var notes = new Notes();
+  notes.addNote("new note");
   try {
-    assert.isTrue(truncator(notes.items[0]).length < 21);
+    assert.isEqual(notes.items.length, 1);
+    return "Passed - note has been added";
+  }
+  catch(error){
+    return error;
+  }
+};
+var checkGetFullNoteText = function(){
+  var notes = new Notes();
+  var note = new Note ("some text");
+  notes.addNote(note);
+  try {
+    assert.isEqual(notes.getFullNoteText(0), "some text");
+    return "Passed - getFullNoteText";
+  }
+  catch(error){
+    return error;
+  }
+};
+
+var checkNoteHasOnly20Characters = function(){
+  var note = new Note('hellohellohellohello!!!');
+  try {
+    assert.isTrue(note.truncator(note.getNoteText()).length < 24);
     return "Passed - note has fewer than 20 characters";
   }
   catch(error){
@@ -23,8 +47,21 @@ var checkNoteHasBeenAdded = function(){
   }
 };
 
+var checkNoteText = function(){
+  var note = new Note('hellohellohellohello!!!');
+  try {
+    assert.isEqual(note.getNoteText(), 'hellohellohellohello!!!');
+    return "Passed - checkNoteText";
+  }
+  catch(error){
+    return error;
+  }
+};
+
+
 // ---Update this array to run tests!! ---
-var tests = [ checkDefaultIs0(), checkNoteHasBeenAdded(), checkNoteHasOnly20Characters() ];
+var tests = [ checkDefaultIs0(), checkNoteHasBeenAdded(),
+  checkNoteHasOnly20Characters(), checkNoteText(), checkGetFullNoteText() ];
 
 // --- UPDATES THE HTML ---
 
