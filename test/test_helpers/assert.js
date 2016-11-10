@@ -11,12 +11,16 @@ var assert = {
     }
   },
 
-  isInstanceOf: function(assertionToCheck, assertion) {
+  isTypeOf: function(assertionToCheck, assertion) {
     if (typeof(assertionToCheck) !== assertion) {
       throw new Error("Assertion failed: " + assertionToCheck + " is not type of: " + assertion);
     }
+  },
+  belongsToPrototype: function(assertionToCheck, assertion) {
+    if (Object.getPrototypeOf(assertionToCheck).constructor.name !== assertion) {
+      throw new Error("Assertion failed: " + assertionToCheck + " is not prototype of: " + assertion);
+    }
   }
-
 };
 
 // module.exports = assert;

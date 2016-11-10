@@ -9,7 +9,6 @@ function createNote() {
   document.getElementById("add-note").addEventListener("click", function() {
     var note = new Note(document.getElementById("note-content").value);
     mynotes.addNote(note);
-    console.log(notes);
     if(document.getElementById("note-content").value !== "") {
       addNoteToList(note);
       document.getElementById("note-content").value = "";

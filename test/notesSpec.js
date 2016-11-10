@@ -58,12 +58,26 @@ var checkNoteText = function(){
   }
 };
 
+var checkNote = function(){
+  var note = new Note('hellohellohellohello!!!');
+  try {
+    assert.belongsToPrototype(note, 'Note');
+    return "Passed - checkNoteText is prototype of Note";
+  }
+  catch(error){
+    return error;
+  }
+};
 
 // ---Update this array to run tests!! ---
-var tests = [ checkDefaultIs0(), checkNoteHasBeenAdded(),
-  checkNoteHasOnly20Characters(), checkNoteText(), checkGetFullNoteText() ];
+var tests = [ checkDefaultIs0(),
+  checkNoteHasBeenAdded(),
+  checkNoteHasOnly20Characters(),
+  checkNoteText(),
+  checkGetFullNoteText(),
+  checkNote()];
 
-// --- UPDATES THE HTML ---
+// --- UPDATES THE SpecRunner HTML ---
 
 var runTests = function() {
   tests.forEach(function(test){
