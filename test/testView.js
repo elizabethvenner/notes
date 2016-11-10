@@ -1,4 +1,3 @@
-console.log('hello2');
 function view () {
   document.createElement('body');
   var title = document.createElement('title');
@@ -23,7 +22,7 @@ function loadscripts () {
 window.onload = function () {
   view();
   loadscripts();
-  setTimeout(runTests, 10);
+  setTimeout(runTests, 100);
 };
 
 function runTests() {

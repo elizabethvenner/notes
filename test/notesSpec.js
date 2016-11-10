@@ -1,10 +1,7 @@
-// var assert = require("./test_helpers/assert");
-console.log("hello1");
 var notesTests = [
   (function checkDefaultIs0 (){
     var notes = new Notes();
     try {
-      // ACTUAL TEST
       assert.isTrue(notes.items.length === 0);
       return "Passed - array is 0 by default";
     }
