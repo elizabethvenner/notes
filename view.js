@@ -1,9 +1,10 @@
 window.onload = function() {
   heading("NOTES");
-  errors();
+  div('errors');
   textArea();
   notes();
   heading("My note");
+  div('full');
 };
 
 function heading(text) {
@@ -13,9 +14,9 @@ function heading(text) {
   document.body.appendChild(h1);
 }
 
-function errors() {
+function div(idValue) {
   var div = document.createElement('DIV');
-  div.setAttribute("id", "errors");
+  div.setAttribute("id", idValue);
   document.body.appendChild(div);
 }
 
