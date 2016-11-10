@@ -1,13 +1,14 @@
 window.onload = function() {
-  heading();
+  heading("NOTES");
   errors();
   textArea();
   notes();
+  heading("My note");
 };
 
-function heading() {
+function heading(text) {
   var h1 = document.createElement("H1");
-  var t = document.createTextNode("My note");
+  var t = document.createTextNode(text);
   h1.appendChild(t);
   document.body.appendChild(h1);
 }
