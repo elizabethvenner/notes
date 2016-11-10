@@ -5,6 +5,7 @@ window.onload = function() {
   notes();
   heading("My note");
   div('full');
+  script('ui.js');
 };
 
 function heading(text) {
@@ -33,4 +34,10 @@ function notes() {
   var ul = document.createElement('UL');
   ul.setAttribute("id", "notes");
   document.body.appendChild(ul);
+}
+
+function script(srcValue) {
+  var script = document.createElement('SCRIPT');
+  script.setAttribute("src", srcValue);
+  document.body.appendChild(script);
 }
