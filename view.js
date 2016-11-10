@@ -21,13 +21,8 @@ window.onload = function() {
       var currentArray = myElements[i].attributes[x];
       element.setAttribute(currentArray[0], currentArray[1]);
     }
-    if (myElements[i].location == "head") {
-      document.head.appendChild(element);
-    } else {
-      document.body.appendChild(element);
-    }
+    document[myElements[i].location].appendChild(element);
   }
-
 };
 
 function heading(text) {
