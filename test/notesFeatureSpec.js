@@ -1,10 +1,8 @@
 (function(){
 
   function testCreateNote () {
-    console.log("2nd");
     document.getElementById("note-content").value = "GET UP VERY VERY VERY VERY VERY EARLY!";
     document.getElementById("add-note").click();
-    console.log(myNotes);
     if (myNotes.items.length !== 1) {
       throw new Error("Note array length has not increased");
     }
