@@ -2,10 +2,16 @@ function Notes() {
   this.items = [];
 }
 
-function truncator(note) {
-  if (note.length < 20) {
-    return note;
-  } else {
-    return note.slice(0, 20) + "...";
-  }
-}
+Notes.prototype.addNote = function (note) {
+  this.items.push(note);
+};
+
+Notes.prototype.getFullNoteText = function (index) {
+ return this.items[index].text;
+};
+
+Notes.prototype.getNoteIndex = function () {
+  return (this.items.length - 1);
+};
+
+myNotes = new Notes();

@@ -1,4 +1,5 @@
 window.onload = function() {
+<<<<<<< HEAD
   var myElements = [
     {element: "H1", attributes:[], location: "body", innerElement: document.createTextNode("NOTES")},
     {element: "SCRIPT", attributes: [["src", "notes.js"]], location: "head" },
@@ -23,7 +24,23 @@ window.onload = function() {
     }
     document[myElements[i].location].appendChild(element);
   }
-
+};
+=======
+  scriptHead('notes.js');
+  scriptHead('note.js');
+  heading("NOTES");
+  div('errors');
+  textArea();
+  createButton();
+  notes();
+  heading("My note");
+  div('full');
+  scriptBody('controller.js');
+  console.log("1st");
+  console.log(window.location);
+  if (findTestFile(window.location) === "testIndex.html") {
+     scriptBody('test/notesFeatureSpec.js');
+  }
 };
 
 function findTestFile (location){
@@ -102,3 +119,4 @@ function showEnterTextMessage (){
   document.getElementById("errors").innerHTML = "Please enter some text";
 
 }
+>>>>>>> master
