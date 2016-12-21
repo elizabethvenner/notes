@@ -14,6 +14,6 @@ This is a single page application created using vanilla JavaScript. It allows yo
 
 In root directory run ```open SpecRunner.html```
 
-Authors
+####Authors
 
 Elizabeth Venner, [Laszlo Bogacsi](https://github.com/LaszloBogacsi), [Katy McCann](https://github.com/Katy600), [James Gardiner](https://github.com/JG075)
