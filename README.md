@@ -7,12 +7,13 @@ This is a single page application created using vanilla JavaScript. It allows yo
 - Clone this repository
 - Ensure Node.js is installed
 - Navigate to root directory in terminal and run ```npm install```
-- Run ```open index.html```
+- Install http-server as per instructions on the [website](https://www.npmjs.com/package/http-server)
+- Start the server and visit http://localhost:8080 to view
 - Create your notes! Please be aware that notes will not be persisted should you refresh the page.
     
 ####To test:
 
-In root directory run ```open SpecRunner.html```
+In root directory run ```open SpecRunner.html``` (```xdg-open SpecRunner.html``` in Linux)
 
 ####Authors
 
