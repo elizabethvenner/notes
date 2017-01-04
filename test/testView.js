@@ -11,7 +11,7 @@ function view () {
 
 
 function loadscripts () {
-  var scripts = ["test/test_helpers/assert.js", "notes.js", "note.js", "test/noteSpec.js",
+  var scripts = ["test/test_helpers/assert.js", "note.js", "notes.js", "test/noteSpec.js",
   "test/notesSpec.js"];
   scripts.forEach(function(script_path){
     var script = document.createElement('script');
