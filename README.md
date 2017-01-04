@@ -7,8 +7,8 @@ This is a single page application created using vanilla JavaScript. It allows yo
 - Clone this repository
 - Ensure Node.js is installed
 - Navigate to root directory in terminal and run ```npm install```
-- Install http-server as per instructions on the [website](https://www.npmjs.com/package/http-server)
-- Start the server and visit http://localhost:8080 to view
+- Install http-server as per instructions on [https://www.npmjs.com/package/http-server](https://www.npmjs.com/package/http-server)
+- Start the server and visit [http://localhost:8080](http://localhost:8080) to view
 - Create your notes! Please be aware that notes will not be persisted should you refresh the page.
     
 ####To test:
